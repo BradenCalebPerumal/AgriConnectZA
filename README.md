@@ -175,8 +175,7 @@ https://github.com/VCWVL/prog7311-poe-CalebPerumal28.git
 
 ---
 ## 15) Demonstration Video Link
-[https://github.com/VCWVL/prog7311-poe-CalebPerumal28.git
-](https://dlssa-my.sharepoint.com/:v:/g/personal/caleb_dlssa_onmicrosoft_com/EUOaNIhaOqVBlu8r-XHagOkBGvzK5kI-FyRLNxW-lIv4_A)
+https://dlssa-my.sharepoint.com/:v:/g/personal/caleb_dlssa_onmicrosoft_com/EUOaNIhaOqVBlu8r-XHagOkBGvzK5kI-FyRLNxW-lIv4_A
 ---
 ## 16) Admin Login Credentials
 - **Email:** anna.agriconnectza@gmail.com 
