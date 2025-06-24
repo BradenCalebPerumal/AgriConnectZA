@@ -171,7 +171,7 @@ This project was created and maintained by **Braden Caleb Perumal (ST10287165)**
 ---
 
 ## 14) GitHub Link
-https://github.com/VCWVL/prog7311-part-2-CalebPerumal28.git
+https://github.com/VCWVL/prog7311-poe-CalebPerumal28.git
 
 ---
 
