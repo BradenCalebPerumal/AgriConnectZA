@@ -1,0 +1,443 @@
+@model GreenAgriApp.Models.ViewModels.LoginViewModel
+@{
+    ViewData["Title"] = "AgriConnect - Login";
+    Layout = null;
+}
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="~/css/agriconnect-login.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
+<script src="~/scripts/lottie-player.js"></script>
+<link rel="stylesheet" href="~/css/agriconnect-home.css" />
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<header class="header-top">
+    <div class="logo-container">
+        <a href="/Home/Index">
+            <img src="/images/agriconnect-logo.png" alt="AgriConnect Logo" class="logo">
+        </a>
+        <a href="/Home/Index" class="site-title">AgriConnect</a>
+    </div>
+    <div class="contact-info">
+        <span><i class="fas fa-phone-alt"></i> +27 12 345 6789</span>
+        <span><i class="fas fa-envelope"></i> info@agriconnect.co.za</span>
+        <span><i class="fas fa-map-marker-alt"></i> Durban, South Africa</span>
+    </div>
+</header>
+<nav class="sidebar" id="sidebar">
+    <button class="close-btn" onclick="toggleSidebar()">×</button>
+    <div class="sidebar-logo-stack">
+        <img src="/images/agriconnect-logo-side.png" class="sidebar-logo-top" />
+        <span class="sidebar-title-top">AgriConnect</span>
+    </div>
+
+    <a href="/Home/Index"><i class="fas fa-home"></i> Home</a>
+    <a href="/Home/PublicEnquiry"><i class="fas fa-question-circle"></i> Enquiries</a>
+    <a href="/Home/Contact"><i class="fas fa-envelope"></i> Contact Us</a>
+
+    @if (Context.Session.GetString("UID") != null)
+    {
+        var role = Context.Session.GetString("Role");
+        switch (role)
+        {
+            case "Employee":
+                <a href="/Employee/Dashboard"><i class="fas fa-tachometer-alt"></i> Dashboard</a>
+                break;
+            case "Farmer":
+                <a href="/Farmer/Dashboard"><i class="fas fa-tachometer-alt"></i> Dashboard</a>
+                break;
+            case "GreenTech":
+                <a href="/GreenTech/Dashboard"><i class="fas fa-tachometer-alt"></i> Dashboard</a>
+                break;
+        }
+
+        <a href="/Account/Logout"><i class="fas fa-sign-out-alt"></i> Logout</a>
+    }
+    else
+    {
+        <a href="/Account/Login"><i class="fas fa-sign-in-alt"></i> Login / Register</a>
+    }
+</nav>
+
+
+<button class="menu-toggle" onclick="toggleSidebar()">
+    <i class="fas fa-bars"></i> Menu
+</button>
+
+
+<div class="login-page-wrapper">
+    
+<div class="login-container">
+    <!-- Background Elements -->
+    <div class="animated-bg">
+        <div class="bg-shape shape1"></div>
+        <div class="bg-shape shape2"></div>
+        <div class="bg-shape shape3"></div>
+        <div class="bg-leaf leaf1">
+            <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                <path d="M50,90 C30,90 10,70 10,50 C10,30 30,10 50,10 C70,10 90,30 90,50 C90,70 70,90 50,90 Z" fill="#00703c" opacity="0.2" />
+            </svg>
+        </div>
+        <div class="bg-leaf leaf2">
+            <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                <path d="M50,90 C30,90 10,70 10,50 C10,30 30,10 50,10 C70,10 90,30 90,50 C90,70 70,90 50,90 Z" fill="#00703c" opacity="0.2" />
+            </svg>
+        </div>
+    </div>
+
+    <!-- Left Panel with Decorative Elements -->
+    <div class="login-panel left-panel">
+        <div class="logo-section">
+            <a href="/Home/Index" class="logo-link">
+                <div class="logo"></div>
+                <span class="logo-text">AgriConnect</span>
+            </a>
+        </div>
+        
+        <div class="illustration-container">
+            <div class="plant-animation">
+                <div class="plant-pot"></div>
+                <div class="plant-stem">
+                    <div class="plant-leaf left-leaf"></div>
+                    <div class="plant-leaf right-leaf"></div>
+                    <div class="plant-flower"></div>
+                </div>
+            </div>
+            <h2 class="welcome-text">Welcome to AgriConnect</h2>
+            <p class="welcome-subtext">Empowering Agriculture Through Technology</p>
+        </div>
+        
+        <div class="decoration-dots">
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+        </div>
+    </div>
+
+    <!-- Right Panel with Login Form -->
+    <div class="login-panel right-panel">
+        <div class="form-container">
+            <div class="login-header">
+                <h2 class="login-title">Welcome Back</h2>
+                <p class="login-subtitle">Login to access your AgriConnect dashboard</p>
+            </div>
+
+            <form asp-action="Login" method="post" class="login-form">
+            <div class="form-floating">
+    <input asp-for="Email" id="email" class="form-control" placeholder=" " required />
+    <label for="email"><i class="fas fa-envelope"></i> Email</label>
+    <span asp-validation-for="Email" class="text-danger"></span>
+    <div class="form-highlight"></div>
+</div>
+
+                
+         <div class="form-floating">
+    <input asp-for="Password" id="password" type="password" class="form-control" placeholder=" " required />
+    <label for="password"><i class="fas fa-lock"></i> Password</label>
+    <span asp-validation-for="Password" class="text-danger"></span>
+<button type="button" class="password-  " onclick="togglePassword(event)">
+</button>
+    <div class="form-highlight"></div>
+</div>
+
+
+                <div class="remember-forgot">
+                    <div class="remember-me">
+                        <input type="checkbox" id="remember" class="custom-checkbox">
+                        <label for="remember">Remember me</label>
+                    </div>
+                    <a href="/Account/ForgotPassword" class="forgot-password">Forgot Password?</a>
+                </div>
+
+                @if (!string.IsNullOrEmpty(ViewBag.Error))
+                {
+                    <div class="error-message">
+                        <i class="fas fa-exclamation-circle"></i>
+                        <span>@ViewBag.Error</span>
+                    </div>
+                }
+
+          <button type="submit" class="login-button">
+    <span class="button-text">Login</span>
+    <div class="button-icon"><i class="fas fa-arrow-right"></i></div>
+    <div class="button-ripple"></div>
+</button>
+
+            </form>
+            
+            <div class="alternative-login">
+                <span class="divider">OR</span>
+                <div class="social-login">
+                    <button class="social-btn google">
+                        <i class="fab fa-google"></i>
+                        <span>Google</span>
+                    </button>
+                    <button class="social-btn microsoft">
+                        <i class="fab fa-microsoft"></i>
+                        <span>Microsoft</span>
+                    </button>
+                </div>
+            </div>
+            
+            <div class="signup-link">
+                <p>Don't have an account? <a href="/Home/PublicEnquiry">Contact Admin</a></p>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+<!-- Footer -->
+<footer>
+    <div class="footer-content">
+        <div class="footer-column">
+            <h3>AgriConnect</h3>
+            <p>Bringing farmers and green technology together for a sustainable future.</p>
+            <div class="social-icons">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+        </div>
+        
+        <div class="footer-column">
+            <h3>Quick Links</h3>
+            <a href="/Home/Index">Home</a>
+            <a href="/Home/About">About Us</a>
+            <a href="/Home/Services">Services</a>
+            <a href="/Home/Contact">Contact</a>
+        </div>
+        
+        <div class="footer-column">
+            <h3>Contact Us</h3>
+            <p><i class="fas fa-map-marker-alt"></i> Durban, South Africa</p>
+            <p><i class="fas fa-phone-alt"></i> +27 861 555 181</p>
+            <p><i class="fas fa-envelope"></i> agriconnectza@gmail.com</p>
+        </div>
+    </div>
+    
+    <div class="copyright">
+        <p>© 2025 AgriConnect. All rights reserved.</p>
+    </div>
+</footer>
+<script>
+// Toggle password visibility
+function togglePassword(e) {
+    e.preventDefault(); // prevents form submission
+    const passwordInput = document.getElementById('password');
+    const toggleIcon = document.querySelector('.password-toggle i');
+
+    if (passwordInput.type === "password") {
+        passwordInput.type = "text";
+        toggleIcon.classList.remove("fa-eye");
+        toggleIcon.classList.add("fa-eye-slash");
+    } else {
+        passwordInput.type = "password";
+        toggleIcon.classList.remove("fa-eye-slash");
+        toggleIcon.classList.add("fa-eye");
+    }
+}
+
+// Animations using GSAP
+document.addEventListener('DOMContentLoaded', function () {
+    // Initial animations
+    gsap.from(".login-panel", {
+        duration: 1.2,
+        opacity: 0,
+        y: 20,
+        stagger: 0.3,
+        ease: "power3.out"
+    });
+
+    gsap.from(".logo-section", {
+        duration: 1,
+        opacity: 0,
+        y: -30,
+        delay: 0.5,
+        ease: "back.out(1.7)"
+    });
+
+    gsap.from(".login-title, .login-subtitle", {
+        duration: 0.8,
+        opacity: 0,
+        y: 20,
+        stagger: 0.2,
+        delay: 0.7,
+        ease: "power2.out"
+    });
+
+    gsap.from(".form-floating", {
+        duration: 0.8,
+        opacity: 0,
+        y: 30,
+        stagger: 0.2,
+        delay: 1,
+        ease: "power2.out"
+    });
+
+    gsap.from(".login-button, .alternative-login, .signup-link", {
+        duration: 0.8,
+        opacity: 0,
+        y: 20,
+        stagger: 0.2,
+        delay: 1.4,
+        ease: "power2.out"
+    });
+
+    // Background shapes animation
+    gsap.to(".bg-shape", {
+        duration: 15,
+        rotation: 360,
+        repeat: -1,
+        ease: "none",
+        stagger: 3
+    });
+
+    gsap.to(".bg-leaf", {
+        duration: 8,
+        rotation: 10,
+        yoyo: true,
+        repeat: -1,
+        ease: "sine.inOut",
+        stagger: 2
+    });
+
+    // Plant animation
+    gsap.from(".plant-stem", {
+        duration: 2,
+        scaleY: 0,
+        transformOrigin: "bottom",
+        ease: "power2.out",
+        delay: 1.5
+    });
+
+    gsap.from(".plant-leaf", {
+        duration: 1.5,
+        scale: 0,
+        rotation: -10,
+        transformOrigin: "bottom center",
+        ease: "elastic.out(1, 0.5)",
+        stagger: 0.3,
+        delay: 2.5
+    });
+
+    gsap.from(".plant-flower", {
+        duration: 1.5,
+        scale: 0,
+        opacity: 0,
+        transformOrigin: "bottom center",
+        ease: "back.out(2)",
+        delay: 3.3
+    });
+
+    // Animate dots
+    gsap.to(".dot", {
+        duration: 1.5,
+        y: -15,
+        opacity: 0.7,
+        stagger: 0.2,
+        yoyo: true,
+        repeat: -1,
+        ease: "sine.inOut"
+    });
+
+    // Form interaction animations
+    const formInputs = document.querySelectorAll('.form-control');
+
+    formInputs.forEach(input => {
+        input.addEventListener('focus', function () {
+            gsap.to(this.nextElementSibling.nextElementSibling.nextElementSibling, {
+                width: "100%",
+                duration: 0.3,
+                ease: "power1.out"
+            });
+        });
+
+        input.addEventListener('blur', function () {
+            if (!this.value) {
+                gsap.to(this.nextElementSibling.nextElementSibling.nextElementSibling, {
+                    width: "0%",
+                    duration: 0.3,
+                    ease: "power1.in"
+                });
+            }
+        });
+    });
+
+    // Button hover effect
+    const loginButton = document.querySelector('.login-button');
+
+    loginButton.addEventListener('mouseenter', function () {
+        gsap.to(this.querySelector('.button-icon'), {
+            x: 5,
+            opacity: 1,
+            duration: 0.3,
+            ease: "power2.out"
+        });
+    });
+
+    loginButton.addEventListener('mouseleave', function () {
+        gsap.to(this.querySelector('.button-icon'), {
+            x: 0,
+            opacity: 0.7,
+            duration: 0.3,
+            ease: "power2.in"
+        });
+    });
+
+    // Button click ripple effect
+    loginButton.addEventListener('click', function (e) {
+        const ripple = this.querySelector('.button-ripple');
+        const x = e.clientX - this.getBoundingClientRect().left;
+        const y = e.clientY - this.getBoundingClientRect().top;
+
+        ripple.style.left = `${x}px`;
+        ripple.style.top = `${y}px`;
+
+        ripple.classList.add('active');
+
+        setTimeout(() => {
+            ripple.classList.remove('active');
+        }, 500);
+    });
+});
+</script>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
+<style>
+.login-button {
+    background: darkgreen !important; /* Bright visible background */
+    color: white !important; /* Visible text */
+    border: 2px solid transparent !important;
+    z-index: 9999 !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    display: flex !important;
+    justify-content: center;
+    align-items: center;
+    min-height: 60px !important;
+    font-size: 1.2rem !important;
+    padding: 20px !important;
+    position: relative !important;
+}
+
+.login-button * {
+    color: white !important;
+    display: inline-block !important;
+    opacity: 1 !important;
+}
+.login-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(0, 112, 60, 0.2);
+}
+
+
+</style>
+<script>
+    function toggleSidebar() {
+        const sidebar = document.getElementById("sidebar");
+        sidebar.classList.toggle("open");
+    }
+</script>

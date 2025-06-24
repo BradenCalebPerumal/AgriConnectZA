@@ -1,0 +1,65 @@
+@{
+    ViewData["Title"] = "Request New Category";
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"]</title>
+    <link rel="stylesheet" href="~/css/agriconnect-form.css" />
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+<body>
+
+<section class="form-hero-section">
+    <h1>Request a New Category</h1>
+    <p>Don't see the category you need? Submit a request and our team will review it.</p>
+</section>
+
+<div class="form-container">
+    <form asp-action="RequestCategory" method="post" class="agriconnect-form">
+        <div class="form-group">
+            <label>Category Name:</label>
+            <input type="text" name="name" class="form-control" placeholder="e.g. Organic Seeds" required />
+        </div>
+
+        <button type="submit" class="submit-button">
+            <i class="fas fa-paper-plane"></i> Submit Request
+        </button>
+    </form>
+
+    @if (ViewBag.Error != null)
+    {
+        <div class="error-message">
+            <i class="fas fa-exclamation-circle"></i> @ViewBag.Error
+        </div>
+    }
+</div>
+
+@section Scripts {
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            @if (TempData["Success"] != null)
+            {
+                <text>
+                    Swal.fire({
+                        toast: true,
+                        position: 'top-end',
+                        icon: 'success',
+                        title: @Html.Raw(Json.Serialize(TempData["Success"])),
+                        showConfirmButton: false,
+                        timer: 5000,
+                        timerProgressBar: true,
+                        background: '#004d29',
+                        color: 'white',
+                        iconColor: '#21a95d'
+                    });
+                </text>
+            }
+        });
+    </script>
+}
+
+</body>
+</html>

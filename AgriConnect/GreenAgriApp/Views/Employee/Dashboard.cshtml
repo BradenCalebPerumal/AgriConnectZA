@@ -1,0 +1,103 @@
+@{
+    ViewData["Title"] = "Employee Dashboard";
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"]</title>
+    <link rel="stylesheet" href="@Url.Content("~/css/employee-dashboard.css")" />
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+<body>
+
+<div class="employee-dashboard">
+    <section class="employee-hero">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1 class="hero-heading">
+                <span class="typewriter-no-cursor">Welcome, @ViewBag.EmployeeName!</span>
+            </h1>
+            <p class="hero-subheading">You're now in control. Manage farmers, users, and the future of AgriConnect.</p>
+        </div>
+
+        <div class="hero-shape shape1"></div>
+        <div class="hero-shape shape2"></div>
+        <div class="hero-shape shape3"></div>
+    </section>
+
+    <div class="dashboard-grid">
+        <a href="@Url.Action("AddFarmer", "Employee")" class="dashboard-card">
+            <i class="fas fa-user-plus card-icon"></i>
+            <span>Add Farmer</span>
+        </a>
+
+        <a href="@Url.Action("AddGreenTech", "Employee")" class="dashboard-card">
+            <i class="fas fa-leaf card-icon"></i>
+            <span>Add Green Tech User</span>
+        </a>
+
+        <a href="@Url.Action("ListUsers", "Employee")" class="dashboard-card">
+            <i class="fas fa-users card-icon"></i>
+            <span>View All Registered Users</span>
+        </a>
+
+        <a href="@Url.Action("ManageResources", "Employee")" class="dashboard-card">
+            <i class="fas fa-book card-icon"></i>
+            <span>Educational Resources</span>
+        </a>
+
+        <a href="@Url.Action("MonitorBlog", "Employee")" class="dashboard-card">
+            <i class="fas fa-blog card-icon"></i>
+            <span>Monitor Blog</span>
+        </a>
+
+        <a href="@Url.Action("ManageFarmerCategories", "Employee")" class="dashboard-card">
+            <i class="fas fa-seedling card-icon"></i>
+            <span>Manage Farmer Categories</span>
+        </a>
+
+        <a href="@Url.Action("ManageGreenTechCategories", "Employee")" class="dashboard-card">
+            <i class="fas fa-industry card-icon"></i>
+            <span>Manage GreenTech Categories</span>
+        </a>
+
+        <a href="@Url.Action("ViewAllFarmerProducts", "Employee")" class="dashboard-card">
+            <i class="fas fa-boxes card-icon"></i>
+            <span>View All Farmer Products</span>
+        </a>
+
+        <a href="@Url.Action("Logout", "Account")" class="dashboard-card logout">
+            <i class="fas fa-sign-out-alt card-icon"></i>
+            <span>Logout</span>
+        </a>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            @if (TempData["Success"] != null)
+            {
+                <text>
+                    Swal.fire({
+                        toast: true,
+                        position: 'top-end',
+                        icon: 'success',
+                        title: @Html.Raw(Json.Serialize(TempData["Success"])),
+                        showConfirmButton: false,
+                        timer: 5500,
+                        timerProgressBar: true,
+                        background: '#004d29',
+                        color: 'white',
+                        iconColor: '#21a95d'
+                    });
+                </text>
+            }
+        });
+    </script>
+}
+
+</body>
+</html>

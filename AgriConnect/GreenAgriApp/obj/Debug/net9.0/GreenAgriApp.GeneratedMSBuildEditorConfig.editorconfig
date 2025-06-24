@@ -1,0 +1,201 @@
+is_global = true
+build_property.TargetFramework = net9.0
+build_property.TargetFramework = net9.0
+build_property.TargetPlatformMinVersion = 
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.ProjectTypeGuids = 
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = 
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
+build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = GreenAgriApp
+build_property.RootNamespace = GreenAgriApp
+build_property.ProjectDir = C:\Users\Caleb\OneDrive - DLSSA\BCAD DEGREE\Year Three\Semester 1\PROG 7311 EB\GitHub Submissions\prog7311-part-2-CalebPerumal28\AgriConnect\GreenAgriApp\
+build_property.EnableComHosting = 
+build_property.EnableGeneratedComInterfaceComImportInterop = 
+build_property.RazorLangVersion = 9.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = C:\Users\Caleb\OneDrive - DLSSA\BCAD DEGREE\Year Three\Semester 1\PROG 7311 EB\GitHub Submissions\prog7311-part-2-CalebPerumal28\AgriConnect\GreenAgriApp
+build_property._RazorSourceGeneratorDebug = 
+build_property.EffectiveAnalysisLevelStyle = 9.0
+build_property.EnableCodeStyleSeverity = 
+
+[C:/Users/Caleb/OneDrive - DLSSA/BCAD DEGREE/Year Three/Semester 1/PROG 7311 EB/GitHub Submissions/prog7311-part-2-CalebPerumal28/AgriConnect/GreenAgriApp/Views/Account/ForgotPassword.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxGb3Jnb3RQYXNzd29yZC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Caleb/OneDrive - DLSSA/BCAD DEGREE/Year Three/Semester 1/PROG 7311 EB/GitHub Submissions/prog7311-part-2-CalebPerumal28/AgriConnect/GreenAgriApp/Views/Account/Login.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxMb2dpbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Caleb/OneDrive - DLSSA/BCAD DEGREE/Year Three/Semester 1/PROG 7311 EB/GitHub Submissions/prog7311-part-2-CalebPerumal28/AgriConnect/GreenAgriApp/Views/Employee/AddBlogPost.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRW1wbG95ZWVcQWRkQmxvZ1Bvc3QuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Caleb/OneDrive - DLSSA/BCAD DEGREE/Year Three/Semester 1/PROG 7311 EB/GitHub Submissions/prog7311-part-2-CalebPerumal28/AgriConnect/GreenAgriApp/Views/Employee/AddFarmer.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRW1wbG95ZWVcQWRkRmFybWVyLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Caleb/OneDrive - DLSSA/BCAD DEGREE/Year Three/Semester 1/PROG 7311 EB/GitHub Submissions/prog7311-part-2-CalebPerumal28/AgriConnect/GreenAgriApp/Views/Employee/AddGreenTech.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRW1wbG95ZWVcQWRkR3JlZW5UZWNoLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Caleb/OneDrive - DLSSA/BCAD DEGREE/Year Three/Semester 1/PROG 7311 EB/GitHub Submissions/prog7311-part-2-CalebPerumal28/AgriConnect/GreenAgriApp/Views/Employee/Dashboard.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRW1wbG95ZWVcRGFzaGJvYXJkLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Caleb/OneDrive - DLSSA/BCAD DEGREE/Year Three/Semester 1/PROG 7311 EB/GitHub Submissions/prog7311-part-2-CalebPerumal28/AgriConnect/GreenAgriApp/Views/Employee/ListUsers.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRW1wbG95ZWVcTGlzdFVzZXJzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Caleb/OneDrive - DLSSA/BCAD DEGREE/Year Three/Semester 1/PROG 7311 EB/GitHub Submissions/prog7311-part-2-CalebPerumal28/AgriConnect/GreenAgriApp/Views/Employee/ManageCategories.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRW1wbG95ZWVcTWFuYWdlQ2F0ZWdvcmllcy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Caleb/OneDrive - DLSSA/BCAD DEGREE/Year Three/Semester 1/PROG 7311 EB/GitHub Submissions/prog7311-part-2-CalebPerumal28/AgriConnect/GreenAgriApp/Views/Employee/ManageResources.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRW1wbG95ZWVcTWFuYWdlUmVzb3VyY2VzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Caleb/OneDrive - DLSSA/BCAD DEGREE/Year Three/Semester 1/PROG 7311 EB/GitHub Submissions/prog7311-part-2-CalebPerumal28/AgriConnect/GreenAgriApp/Views/Employee/MonitorBlog.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRW1wbG95ZWVcTW9uaXRvckJsb2cuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Caleb/OneDrive - DLSSA/BCAD DEGREE/Year Three/Semester 1/PROG 7311 EB/GitHub Submissions/prog7311-part-2-CalebPerumal28/AgriConnect/GreenAgriApp/Views/Employee/UploadResource.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRW1wbG95ZWVcVXBsb2FkUmVzb3VyY2UuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Caleb/OneDrive - DLSSA/BCAD DEGREE/Year Three/Semester 1/PROG 7311 EB/GitHub Submissions/prog7311-part-2-CalebPerumal28/AgriConnect/GreenAgriApp/Views/Employee/UserProductsGrouped.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRW1wbG95ZWVcVXNlclByb2R1Y3RzR3JvdXBlZC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Caleb/OneDrive - DLSSA/BCAD DEGREE/Year Three/Semester 1/PROG 7311 EB/GitHub Submissions/prog7311-part-2-CalebPerumal28/AgriConnect/GreenAgriApp/Views/Employee/ViewAllFarmerProducts.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRW1wbG95ZWVcVmlld0FsbEZhcm1lclByb2R1Y3RzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Caleb/OneDrive - DLSSA/BCAD DEGREE/Year Three/Semester 1/PROG 7311 EB/GitHub Submissions/prog7311-part-2-CalebPerumal28/AgriConnect/GreenAgriApp/Views/Employee/ViewResource.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRW1wbG95ZWVcVmlld1Jlc291cmNlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Caleb/OneDrive - DLSSA/BCAD DEGREE/Year Three/Semester 1/PROG 7311 EB/GitHub Submissions/prog7311-part-2-CalebPerumal28/AgriConnect/GreenAgriApp/Views/Employee/ViewUser.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRW1wbG95ZWVcVmlld1VzZXIuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Caleb/OneDrive - DLSSA/BCAD DEGREE/Year Three/Semester 1/PROG 7311 EB/GitHub Submissions/prog7311-part-2-CalebPerumal28/AgriConnect/GreenAgriApp/Views/Farmer/AddProduct.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRmFybWVyXEFkZFByb2R1Y3QuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Caleb/OneDrive - DLSSA/BCAD DEGREE/Year Three/Semester 1/PROG 7311 EB/GitHub Submissions/prog7311-part-2-CalebPerumal28/AgriConnect/GreenAgriApp/Views/Farmer/CommunityBlog.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRmFybWVyXENvbW11bml0eUJsb2cuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Caleb/OneDrive - DLSSA/BCAD DEGREE/Year Three/Semester 1/PROG 7311 EB/GitHub Submissions/prog7311-part-2-CalebPerumal28/AgriConnect/GreenAgriApp/Views/Farmer/Dashboard.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRmFybWVyXERhc2hib2FyZC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Caleb/OneDrive - DLSSA/BCAD DEGREE/Year Three/Semester 1/PROG 7311 EB/GitHub Submissions/prog7311-part-2-CalebPerumal28/AgriConnect/GreenAgriApp/Views/Farmer/EducationalResources.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRmFybWVyXEVkdWNhdGlvbmFsUmVzb3VyY2VzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Caleb/OneDrive - DLSSA/BCAD DEGREE/Year Three/Semester 1/PROG 7311 EB/GitHub Submissions/prog7311-part-2-CalebPerumal28/AgriConnect/GreenAgriApp/Views/Farmer/GreenEnergyMarketplace.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRmFybWVyXEdyZWVuRW5lcmd5TWFya2V0cGxhY2UuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Caleb/OneDrive - DLSSA/BCAD DEGREE/Year Three/Semester 1/PROG 7311 EB/GitHub Submissions/prog7311-part-2-CalebPerumal28/AgriConnect/GreenAgriApp/Views/Farmer/ManageProduct.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRmFybWVyXE1hbmFnZVByb2R1Y3QuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Caleb/OneDrive - DLSSA/BCAD DEGREE/Year Three/Semester 1/PROG 7311 EB/GitHub Submissions/prog7311-part-2-CalebPerumal28/AgriConnect/GreenAgriApp/Views/Farmer/MyProducts.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRmFybWVyXE15UHJvZHVjdHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Caleb/OneDrive - DLSSA/BCAD DEGREE/Year Three/Semester 1/PROG 7311 EB/GitHub Submissions/prog7311-part-2-CalebPerumal28/AgriConnect/GreenAgriApp/Views/Farmer/RequestCategory.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRmFybWVyXFJlcXVlc3RDYXRlZ29yeS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Caleb/OneDrive - DLSSA/BCAD DEGREE/Year Three/Semester 1/PROG 7311 EB/GitHub Submissions/prog7311-part-2-CalebPerumal28/AgriConnect/GreenAgriApp/Views/Farmer/SendEnquiry.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRmFybWVyXFNlbmRFbnF1aXJ5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Caleb/OneDrive - DLSSA/BCAD DEGREE/Year Three/Semester 1/PROG 7311 EB/GitHub Submissions/prog7311-part-2-CalebPerumal28/AgriConnect/GreenAgriApp/Views/GreenTech/AddProduct.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcR3JlZW5UZWNoXEFkZFByb2R1Y3QuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Caleb/OneDrive - DLSSA/BCAD DEGREE/Year Three/Semester 1/PROG 7311 EB/GitHub Submissions/prog7311-part-2-CalebPerumal28/AgriConnect/GreenAgriApp/Views/GreenTech/CommunityBlog.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcR3JlZW5UZWNoXENvbW11bml0eUJsb2cuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Caleb/OneDrive - DLSSA/BCAD DEGREE/Year Three/Semester 1/PROG 7311 EB/GitHub Submissions/prog7311-part-2-CalebPerumal28/AgriConnect/GreenAgriApp/Views/GreenTech/Dashboard.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcR3JlZW5UZWNoXERhc2hib2FyZC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Caleb/OneDrive - DLSSA/BCAD DEGREE/Year Three/Semester 1/PROG 7311 EB/GitHub Submissions/prog7311-part-2-CalebPerumal28/AgriConnect/GreenAgriApp/Views/GreenTech/EducationalResources.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcR3JlZW5UZWNoXEVkdWNhdGlvbmFsUmVzb3VyY2VzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Caleb/OneDrive - DLSSA/BCAD DEGREE/Year Three/Semester 1/PROG 7311 EB/GitHub Submissions/prog7311-part-2-CalebPerumal28/AgriConnect/GreenAgriApp/Views/GreenTech/ManageProduct.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcR3JlZW5UZWNoXE1hbmFnZVByb2R1Y3QuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Caleb/OneDrive - DLSSA/BCAD DEGREE/Year Three/Semester 1/PROG 7311 EB/GitHub Submissions/prog7311-part-2-CalebPerumal28/AgriConnect/GreenAgriApp/Views/GreenTech/MyProducts.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcR3JlZW5UZWNoXE15UHJvZHVjdHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Caleb/OneDrive - DLSSA/BCAD DEGREE/Year Three/Semester 1/PROG 7311 EB/GitHub Submissions/prog7311-part-2-CalebPerumal28/AgriConnect/GreenAgriApp/Views/GreenTech/RequestCategory.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcR3JlZW5UZWNoXFJlcXVlc3RDYXRlZ29yeS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Caleb/OneDrive - DLSSA/BCAD DEGREE/Year Three/Semester 1/PROG 7311 EB/GitHub Submissions/prog7311-part-2-CalebPerumal28/AgriConnect/GreenAgriApp/Views/Home/About.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxBYm91dC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Caleb/OneDrive - DLSSA/BCAD DEGREE/Year Three/Semester 1/PROG 7311 EB/GitHub Submissions/prog7311-part-2-CalebPerumal28/AgriConnect/GreenAgriApp/Views/Home/Contact.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxDb250YWN0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Caleb/OneDrive - DLSSA/BCAD DEGREE/Year Three/Semester 1/PROG 7311 EB/GitHub Submissions/prog7311-part-2-CalebPerumal28/AgriConnect/GreenAgriApp/Views/Home/EduResource.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxFZHVSZXNvdXJjZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Caleb/OneDrive - DLSSA/BCAD DEGREE/Year Three/Semester 1/PROG 7311 EB/GitHub Submissions/prog7311-part-2-CalebPerumal28/AgriConnect/GreenAgriApp/Views/Home/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Caleb/OneDrive - DLSSA/BCAD DEGREE/Year Three/Semester 1/PROG 7311 EB/GitHub Submissions/prog7311-part-2-CalebPerumal28/AgriConnect/GreenAgriApp/Views/Home/Privacy.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Caleb/OneDrive - DLSSA/BCAD DEGREE/Year Three/Semester 1/PROG 7311 EB/GitHub Submissions/prog7311-part-2-CalebPerumal28/AgriConnect/GreenAgriApp/Views/Home/PublicEnquiry.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQdWJsaWNFbnF1aXJ5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Caleb/OneDrive - DLSSA/BCAD DEGREE/Year Three/Semester 1/PROG 7311 EB/GitHub Submissions/prog7311-part-2-CalebPerumal28/AgriConnect/GreenAgriApp/Views/Home/TermsOfUse.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxUZXJtc09mVXNlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Caleb/OneDrive - DLSSA/BCAD DEGREE/Year Three/Semester 1/PROG 7311 EB/GitHub Submissions/prog7311-part-2-CalebPerumal28/AgriConnect/GreenAgriApp/Views/Shared/Error.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Caleb/OneDrive - DLSSA/BCAD DEGREE/Year Three/Semester 1/PROG 7311 EB/GitHub Submissions/prog7311-part-2-CalebPerumal28/AgriConnect/GreenAgriApp/Views/Shared/_ValidationScriptsPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Caleb/OneDrive - DLSSA/BCAD DEGREE/Year Three/Semester 1/PROG 7311 EB/GitHub Submissions/prog7311-part-2-CalebPerumal28/AgriConnect/GreenAgriApp/Views/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Caleb/OneDrive - DLSSA/BCAD DEGREE/Year Three/Semester 1/PROG 7311 EB/GitHub Submissions/prog7311-part-2-CalebPerumal28/AgriConnect/GreenAgriApp/Views/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Caleb/OneDrive - DLSSA/BCAD DEGREE/Year Three/Semester 1/PROG 7311 EB/GitHub Submissions/prog7311-part-2-CalebPerumal28/AgriConnect/GreenAgriApp/Views/Shared/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = b-2frp0ho0ka

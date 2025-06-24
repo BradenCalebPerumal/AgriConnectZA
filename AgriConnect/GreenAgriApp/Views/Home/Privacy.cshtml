@@ -1,0 +1,98 @@
+﻿@{
+    ViewData["Title"] = "Privacy Policy";
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"]</title>
+    <link rel="stylesheet" href="~/css/agriconnect-form.css" />
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+<body>
+
+<section class="form-hero-section">
+    <h1 style="text-align: center;">Privacy Policy</h1>
+    <p style="text-align: center; max-width: 800px; margin: 0 auto;">
+        At <strong>AgriConnect</strong>, we value your privacy and are committed to protecting the personal information you share with us. This policy outlines how we collect, use, and safeguard your data.
+    </p>
+</section>
+
+<div class="container" style="margin-top: 40px;">
+    <div class="styled-box">
+        <h2 class="fancy-heading">1. Information We Collect</h2>
+        <ul class="styled-list">
+            <li><strong>Account Info:</strong> Name, email, role (Farmer or GreenTech), contact details</li>
+            <li><strong>Usage Data:</strong> Logins, listings, enquiries</li>
+            <li><strong>Uploads:</strong> Images, blogs, educational content</li>
+        </ul>
+
+        <h2 class="fancy-heading">2. How We Use Your Info</h2>
+        <ul class="styled-list">
+            <li>Authenticate users</li>
+            <li>Enable platform features</li>
+            <li>Send notifications</li>
+            <li>Improve services & insights</li>
+        </ul>
+
+        <h2 class="fancy-heading">3. Who Can See Your Data</h2>
+        <ul class="styled-list">
+            <li>Admins (full access)</li>
+            <li>Farmers/GreenTech (limited view)</li>
+            <li>No third-party sharing</li>
+        </ul>
+
+        <h2 class="fancy-heading">4. Data Security</h2>
+        <p>We implement industry-standard security such as:</p>
+        <ul class="styled-list">
+            <li>Secure Firebase Authentication</li>
+            <li>HTTPS encryption</li>
+            <li>Role-based access</li>
+        </ul>
+
+        <h2 class="fancy-heading">5. Cookies</h2>
+        <p>We use only session cookies for state and navigation. No advertising/tracking cookies are used.</p>
+
+        <h2 class="fancy-heading">6. Your Rights</h2>
+        <ul class="styled-list">
+            <li>Request your data or deletion anytime</li>
+            <li>Update via profile or support contact</li>
+        </ul>
+
+        <h2 class="fancy-heading">7. Contact Us</h2>
+        <p>For any privacy concerns, reach out:</p>
+        <p><strong>Phone:</strong> <a href="tel:0671370027">067 137 0027</a></p>
+        <p><strong>Email:</strong> <a href="mailto:agriconnectza@gmail.com">agriconnectza@gmail.com</a></p>
+
+        <hr />
+        <p style="font-style: italic; text-align:right;">Last updated: @DateTime.Now.ToString("MMMM dd, yyyy")</p>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            @if (TempData["Success"] != null)
+            {
+                <text>
+                    Swal.fire({
+                        toast: true,
+                        position: 'top-end',
+                        icon: 'success',
+                        title: @Html.Raw(Json.Serialize(TempData["Success"])),
+                        showConfirmButton: false,
+                        timer: 5000,
+                        background: '#004d29',
+                        color: '#fff',
+                        iconColor: '#21a95d',
+                        timerProgressBar: true
+                    });
+                </text>
+            }
+        });
+    </script>
+}
+
+</body>
+</html>

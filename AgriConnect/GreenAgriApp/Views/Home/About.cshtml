@@ -1,0 +1,98 @@
+@{
+    ViewData["Title"] = "About Us";
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"]</title>
+    <link rel="stylesheet" href="~/css/agriconnect-form.css" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet" />
+</head>
+<body>
+
+<section class="form-hero-section">
+    <h1>About AgriConnect</h1>
+    <p>Empowering innovation in agriculture and sustainable technology.</p>
+</section>
+
+<div class="form-container" style="text-align: center; max-width: 900px;">
+    <h2 style="color: var(--primary-dark); margin-bottom: 10px;">Our Mission & Founders</h2>
+    <p style="font-size: 1.1rem; color: #444;">
+        At AgriConnect, we aim to bridge the gap between agriculture and green technology. We provide a platform where 
+        farmers, innovators, and green tech providers connect, share, and grow together — cultivating a more sustainable future.
+    </p>
+</div>
+
+<section class="user-card-wrapper" style="margin-top: 60px;">
+    <div class="user-card" style="text-align:center;">
+        <img src="~/images/michaell.png" alt="Founder 1" class="founder-img" />
+        <h3>Michael Corleone</h3>
+        <p><strong>Founder & Visionary Lead</strong></p>
+        <p>Driven by impact. Passionate about sustainable systems and community empowerment.</p>
+    </div>
+
+    <div class="user-card" style="text-align:center;">
+        <img src="~/images/tonymontana.png" alt="Founder 2" class="founder-img" />
+        <h3>Antonio "Tony" Montana </h3>
+        <p><strong>Co-Founder & Tech Architect</strong></p>
+        <p>Turning complex code into clean solutions. Bridging agriculture with innovation.</p>
+    </div>
+
+    <div class="user-card" style="text-align:center;">
+        <img src="~/images/tonysoprano.png" alt="Founder 3" class="founder-img" />
+        <h3>Anthony John Soprano</h3>
+        <p><strong>Co-Founder & Product Strategist</strong></p>
+        <p>Focused on growth, design, and user value. Ensuring our solutions meet real-world needs.</p>
+    </div>
+</section>
+
+<section class="core-values-wrapper">
+    <div class="core-values-card horizontal">
+        <h2 class="core-values-heading">Our Core Values</h2>
+        <ul class="core-values-list horizontal-list">
+            <li><i class="fas fa-leaf"></i> Sustainability</li>
+            <li><i class="fas fa-hand-holding-heart"></i> Empowerment</li>
+            <li><i class="fas fa-globe"></i> Global Impact</li>
+            <li><i class="fas fa-bolt"></i> Innovation</li>
+        </ul>
+    </div>
+</section>
+
+<div style="margin-top: 80px; background: linear-gradient(135deg, #00703c 40%, #004d29 60%); padding: 60px 20px; color: white; text-align: center;">
+    <h2 style="font-size: 2rem; margin-bottom: 10px;">Why AgriConnect?</h2>
+    <p style="font-size: 1.1rem; max-width: 800px; margin: 0 auto;">
+        We believe that access to innovation and green solutions shouldn't be limited by location. 
+        That's why we built AgriConnect — a growing ecosystem that supports digital agriculture, smart farming, 
+        and the green tech revolution.
+    </p>
+</div>
+
+@section Scripts {
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            @if (TempData["Success"] != null)
+            {
+                <text>
+                    Swal.fire({
+                        toast: true,
+                        position: 'top-end',
+                        icon: 'success',
+                        title: @Html.Raw(Json.Serialize(TempData["Success"])),
+                        showConfirmButton: false,
+                        timer: 5000,
+                        timerProgressBar: true,
+                        background: '#004d29',
+                        color: 'white',
+                        iconColor: '#21a95d'
+                    });
+                </text>
+            }
+        });
+    </script>
+}
+
+</body>
+</html>

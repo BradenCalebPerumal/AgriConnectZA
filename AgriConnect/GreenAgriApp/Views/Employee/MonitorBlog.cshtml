@@ -1,0 +1,89 @@
+@model List<GreenAgriApp.Models.BlogPost>
+
+@{
+    ViewData["Title"] = "Blog - Monitor Posts";
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"]</title>
+    <link rel="stylesheet" href="~/css/agriconnect-form.css" />
+    <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+<body>
+
+<section class="form-hero-section">
+    <h1>Blog Manager</h1>
+    <p>Review and moderate all blog posts submitted by users below.</p>
+</section>  
+
+<form asp-controller="Employee" asp-action="AddBlogPost" method="get" style="text-align: center; margin: 30px auto;">
+    <button type="submit" class="submit-button">
+        + Add New Blog Post
+    </button>
+</form>
+
+<div class="blog-list-container">
+    @foreach (var post in Model)
+    {
+        <div class="blog-card @(post.IsViolation ? "blog-card-violation" : "")">
+            <div class="blog-header">
+                <strong>@post.UserName</strong>
+                <span class="blog-date">@post.DatePosted.ToString("dd MMM yyyy")</span>
+            </div>
+
+            <p class="blog-message">
+                @(post.IsViolation ? post.ViolationNote : post.Message)
+            </p>
+
+            @if (!string.IsNullOrEmpty(post.ImagePath) && !post.IsViolation)
+            {
+                <img src="@post.ImagePath" class="blog-thumbnail" onclick="expandImage('@post.ImagePath')" />
+            }
+
+            <form asp-action="@(post.IsViolation ? "RestorePost" : "MarkPostAsViolation")" method="post" class="blog-action-form">
+                <input type="hidden" name="postId" value="@post.Id" />
+                <button type="submit" class="blog-action-button">
+                    @(post.IsViolation ? "Undo Violation" : "Mark as Violation")
+                </button>
+            </form>
+        </div>
+    }
+</div>
+
+<script>
+    function expandImage(src) {
+        const win = window.open();
+        win.document.write('<img src="' + src + '" style="width:100%"/>');
+    }
+</script>
+
+@section Scripts {
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            @if (TempData["Success"] != null)
+            {
+                <text>
+                    Swal.fire({
+                        toast: true,
+                        position: 'top-end',
+                        icon: 'success',
+                        title: @Html.Raw(Json.Serialize(TempData["Success"])),
+                        showConfirmButton: false,
+                        timer: 5500,
+                        timerProgressBar: true,
+                        background: '#004d29',
+                        color: 'white',
+                        iconColor: '#21a95d'
+                    });
+                </text>
+            }
+        });
+    </script>
+}
+
+</body>
+</html>

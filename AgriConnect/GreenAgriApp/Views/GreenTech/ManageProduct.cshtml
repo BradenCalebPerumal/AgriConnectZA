@@ -1,0 +1,131 @@
+@model GreenAgriApp.Models.GreenTechProduct
+@{
+    ViewData["Title"] = "Edit GreenTech Product";
+    var categories = ViewBag.Categories as List<GreenAgriApp.Models.Category>;
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"]</title>
+    <link rel="stylesheet" href="~/css/agriconnect-form.css" />
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+<body>
+
+<section class="form-hero-section">
+    <h1>Edit Product</h1>
+    <p>Update your product details or remove it from the marketplace.</p>
+</section>
+
+<div class="form-container">
+    <form asp-action="UpdateProduct" method="post" enctype="multipart/form-data" class="agriconnect-form">
+        <input type="hidden" name="Id" value="@Model.Id" />
+
+        <div class="form-group">
+            <label>Product Name:</label>
+            <input type="text" name="Name" value="@Model.Name" class="form-control" required />
+        </div>
+
+        <div class="form-group">
+            <label>Description:</label>
+            <textarea name="Description" class="form-control" required>@Model.Description</textarea>
+        </div>
+
+        <div class="form-group">
+            <label>Quantity:</label>
+            <input type="number" name="Quantity" value="@Model.Quantity" min="1" class="form-control" required />
+        </div>
+
+        <div class="form-group">
+            <label>Category:</label>
+            <select name="CategoryId" class="form-control" required>
+                @foreach (var cat in categories)
+                {
+                    <option value="@cat.Id" (cat.Id= "@Model.CategoryId")>@cat.Name</option>
+                }
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label>Current Image:</label><br />
+            @if (Model.Image != null)
+            {
+                <img src="data:image/jpeg;base64,@Convert.ToBase64String(Model.Image)" class="modal-product-image" style="margin-top: 10px;" />
+            }
+            else
+            {
+                <p>No image uploaded.</p>
+            }
+        </div>
+
+        <div class="form-group">
+            <label>Replace Image (Optional):</label>
+            <input type="file" name="ImageFile" class="form-control" />
+        </div>
+
+        <button type="submit" class="submit-button">
+            <i class="fas fa-save"></i> Save Changes
+        </button>
+    </form>
+
+    <div style="margin-top: 40px;">
+        <h3 style="color: #c0392b;">Delete Product</h3>
+        <p>Type <strong>DELETE</strong> to confirm:</p>
+        <input type="text" id="deleteConfirm" onkeyup="checkDelete()" class="form-control" />
+        <button id="deleteButton" disabled onclick="confirmDelete(@Model.Id)" class="delete-btn" style="margin-top: 10px;">
+            <i class="fas fa-trash"></i> Delete Product
+        </button>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        function checkDelete() {
+            const input = document.getElementById('deleteConfirm').value.trim();
+            const button = document.getElementById('deleteButton');
+            button.disabled = (input !== 'DELETE');
+        }
+
+        function confirmDelete(productId) {
+            Swal.fire({
+                title: 'Are you sure?',
+                text: "This will permanently delete the product!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#e74c3c',
+                cancelButtonColor: '#999',
+                confirmButtonText: 'Yes, delete it!',
+                background: '#fff'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    window.location.href = '/GreenTech/DeleteProduct?id=' + productId;
+                }
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', function () {
+            @if (TempData["Success"] != null)
+            {
+                <text>
+                    Swal.fire({
+                        toast: true,
+                        position: 'top-end',
+                        icon: 'success',
+                        title: @Html.Raw(Json.Serialize(TempData["Success"])),
+                        showConfirmButton: false,
+                        timer: 5500,
+                        timerProgressBar: true,
+                        background: '#004d29',
+                        color: 'white',
+                        iconColor: '#21a95d'
+                    });
+                </text>
+            }
+        });
+    </script>
+}
+
+</body>
+</html>

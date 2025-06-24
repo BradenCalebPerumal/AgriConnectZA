@@ -1,0 +1,124 @@
+@model GreenAgriApp.Models.User
+
+@{
+    ViewData["Title"] = "Edit User";
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>@ViewData["Title"]</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="~/css/agriconnect-form.css" />
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+<body>
+
+<section class="form-hero-section">
+    <h1>Edit User Details</h1>
+    <p>Make changes and manage the user account from here.</p>
+</section>
+
+<div class="form-container">
+    <form asp-action="UpdateUser" method="post" id="editForm" class="agriconnect-form">
+        <input type="hidden" name="Id" value="@Model.Id" />
+
+        <div class="form-group">
+            <label>Full Name:</label>
+            <input type="text" name="FullName" value="@Model.FullName" oninput="enableSave()" class="form-control" />
+        </div>
+
+        <div class="form-group">
+            <label>Email:</label>
+            <input type="email" name="Email" value="@Model.Email" oninput="enableSave()" class="form-control" />
+        </div>
+
+        <div class="form-group">
+            <label>Role:</label>
+            <input type="text" value="@Model.Role" readonly class="form-control" />
+        </div>
+
+        <div class="form-group">
+            <label>Password:</label>
+            <input type="password" value="********" readonly class="form-control" />
+        </div>
+
+        <button type="submit" id="saveButton" class="submit-button" style="display:none;">
+            <i class="fas fa-save"></i> Save Changes
+        </button>
+    </form>
+
+    <form asp-action="SendPasswordReset" method="post" style="margin-top: 30px;">
+        <input type="hidden" name="email" value="@Model.Email" />
+        <button type="submit" class="submit-button" style="background: var(--accent);">
+            <i class="fas fa-key"></i> Send Password Reset Link
+        </button>
+    </form>
+
+    <div style="margin-top: 30px; text-align: center;">
+        <a href="@Url.Action("ViewUserProducts", "Employee", new { id = Model.Id })" class="submit-button" style="max-width: 300px; display: inline-block;">
+            <i class="fas fa-boxes"></i> View This User's Products
+        </a>
+    </div>
+
+    <div style="margin-top: 40px;">
+        <h3 style="color: #c0392b;">Delete User</h3>
+        <p>Type <strong>DELETE</strong> to confirm:</p>
+        <input type="text" id="deleteConfirm" onkeyup="checkDelete()" class="form-control" />
+        <button id="deleteButton" disabled onclick="confirmDelete('@Model.Id')" class="delete-btn" style="margin-top: 10px;">
+            <i class="fas fa-trash"></i> Delete User
+        </button>
+    </div>
+</div>
+
+<script>
+    function enableSave() {
+        document.getElementById('saveButton').style.display = 'inline-flex';
+    }
+
+    function checkDelete() {
+        const input = document.getElementById('deleteConfirm').value.trim();
+        const button = document.getElementById('deleteButton');
+        button.disabled = (input !== 'DELETE');
+    }
+
+    function confirmDelete(resourceId) {
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "This will permanently delete the resource!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#d33',
+            cancelButtonColor: '#aaa',
+            confirmButtonText: 'Yes, delete it!',
+            background: '#fff',
+        }).then((result) => {
+            if (result.isConfirmed) {
+                window.location.href = '/Employee/DeleteUser?id=' + resourceId;
+            }
+        });
+    }
+
+    document.addEventListener('DOMContentLoaded', function () {
+        @if (TempData["Success"] != null)
+        {
+            <text>
+                Swal.fire({
+                    toast: true,
+                    position: 'top-end',
+                    icon: 'success',
+                    title: @Html.Raw(Json.Serialize(TempData["Success"])),
+                    showConfirmButton: false,
+                    timer: 5500,
+                    timerProgressBar: true,
+                    background: '#004d29',
+                    color: 'white',
+                    iconColor: '#21a95d'
+                });
+            </text>
+        }
+    });
+</script>
+
+</body>
+</html>

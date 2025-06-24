@@ -1,0 +1,76 @@
+@{
+    ViewData["Title"] = "Contact Us";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"]</title>
+    <link rel="stylesheet" href="~/css/agriconnect-enquiry.css" />
+</head>
+<body>
+
+<section class="enquiry-hero">
+    <h1>Contact Us</h1>
+    <p>We would love to hear from you. Use the form or our contact details below.</p>
+</section>
+
+<section class="enquiry-form-wrapper">
+    <div class="enquiry-image-container">
+        <img src="/images/imageside.png" alt="Contact AgriConnect" class="enquiry-side-image" />
+    </div>
+    <div class="enquiry-form-container">
+        <h2>    Get In Touch</h2>
+        <div class="contact-details">
+            <p><strong>📍 Address:</strong> Unit 1B, 1st Floor, Glenmason Corner, 139 Josiah Gumede Rd, Pinetown, Durban, 3610</p>
+            <p><strong>📞 Phone:</strong> 0861 555 181</p>
+            <p><strong>📧 Email:</strong> <a href="mailto:agriconnectza@gmail.com">agriconnectza@gmail.com</a></p>
+        </div>
+
+        <form asp-action="Contact" method="post">
+            <div class="form-group">
+                <input type="text" name="name" placeholder="Your Name" required />
+                <input type="text" name="contactNumber" placeholder="Contact Number" required />
+            </div>
+
+            <div class="form-group">
+                <input type="email" name="email" placeholder="Your Email" required />
+            </div>
+
+            <textarea name="message" placeholder="Your Message" required></textarea>
+
+            <div style="text-align:center;">
+                <button type="submit">Send Message</button>
+            </div>
+
+            @if (ViewBag.Message != null)
+            {
+                <p>@ViewBag.Message</p>
+            }
+        </form>
+    </div>
+</section>
+
+<section class="map-section">
+    <h2>Our Location</h2>
+    <iframe 
+        width="100%" 
+        height="300" 
+        frameborder="0" 
+        scrolling="no" 
+        marginheight="0" 
+        marginwidth="0"
+        src="https://www.openstreetmap.org/export/embed.html?bbox=30.8745%2C-29.8255%2C30.8955%2C-29.8055&layer=mapnik&marker=-29.8155%2C30.8855">
+    </iframe>
+
+    <p>
+        <a href="https://www.openstreetmap.org/?mlat=-29.8155&mlon=30.8855#map=15/-29.8155/30.8855" target="_blank">
+            View Our Location
+        </a>
+    </p>
+</section>
+
+</body>
+</html>

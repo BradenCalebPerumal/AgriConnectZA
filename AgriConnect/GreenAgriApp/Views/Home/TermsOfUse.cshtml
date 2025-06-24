@@ -1,0 +1,89 @@
+﻿@{
+    ViewData["Title"] = "Terms of Use";
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"]</title>
+    <link rel="stylesheet" href="~/css/agriconnect-form.css" />
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+<body>
+
+<section class="form-hero-section">
+    <h1 style="text-align: center;">Terms of Use</h1>
+    <p style="text-align: center; max-width: 800px; margin: 0 auto;">
+        Welcome to <strong>AgriConnect</strong>. By accessing or using our platform, you agree to comply with and be bound by the following terms and conditions. Please read them carefully.
+    </p>
+</section>
+
+<div class="container" style="margin-top: 40px;">
+    <div class="styled-box">
+        <h2 class="fancy-heading">1. Acceptance of Terms</h2>
+        <p>By using AgriConnect, you confirm that you have read, understood, and agree to these Terms of Use. If you do not agree, you must not use the platform.</p>
+
+        <h2 class="fancy-heading">2. Eligibility</h2>
+        <p>You must be a registered user—either as a Farmer, GreenTech Provider, or authorized Employee—to post products, request categories, or access restricted areas of the platform.</p>
+
+        <h2 class="fancy-heading">3. User Responsibilities</h2>
+        <ul class="styled-list">
+            <li>Maintain the confidentiality of your login credentials.</li>
+            <li>Provide accurate and complete information when registering or submitting enquiries.</li>
+            <li>Do not upload offensive, misleading, or inappropriate content.</li>
+            <li>Do not misuse the platform for illegal or unauthorized purposes.</li>
+        </ul>
+
+        <h2 class="fancy-heading">4. Product Listings & Enquiries</h2>
+        <ul class="styled-list">
+            <li>Providers are solely responsible for the accuracy of their listings.</li>
+            <li>Enquiries must be professional and relevant to the listed offerings.</li>
+        </ul>
+
+        <h2 class="fancy-heading">5. Content Moderation</h2>
+        <p>We reserve the right to remove or moderate content that violates our community standards or these terms.</p>
+
+        <h2 class="fancy-heading">6. Limitation of Liability</h2>
+        <p>AgriConnect is offered "as is" with no guarantees of availability, accuracy, or reliability. We are not liable for damages resulting from platform usage.</p>
+
+        <h2 class="fancy-heading">7. Changes to Terms</h2>
+        <p>Terms may be updated periodically. Continued use implies acceptance of any updated terms.</p>
+
+        <h2 class="fancy-heading">8. Termination</h2>
+        <p>We may suspend or terminate your account if you violate these terms.</p>
+
+        <h2 class="fancy-heading">9. Contact Us</h2>
+        <p>If you have questions regarding these terms, please contact us at:</p>
+        <p><strong>Email:</strong> <a href="mailto:agriconnectza@gmail.com">agriconnectza@gmail.com</a></p>
+
+        <hr />
+        <p style="font-style: italic; text-align:right;">Last updated: @DateTime.Now.ToString("MMMM dd, yyyy")</p>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            @if (TempData["Success"] != null)
+            {
+                <text>
+                    Swal.fire({
+                        toast: true,
+                        icon: 'success',
+                        title: @Html.Raw(Json.Serialize(TempData["Success"])),
+                        position: 'top-end',
+                        showConfirmButton: false,
+                        timer: 5000,
+                        background: '#004d29',
+                        color: '#fff',
+                        iconColor: '#21a95d'
+                    });
+                </text>
+            }
+        });
+    </script>
+}
+
+</body>
+</html>

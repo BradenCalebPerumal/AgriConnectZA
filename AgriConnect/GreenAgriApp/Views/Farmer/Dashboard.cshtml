@@ -1,0 +1,96 @@
+@{
+    ViewData["Title"] = "Farmer Dashboard";
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"]</title>
+    <link rel="stylesheet" href="@Url.Content("~/css/employee-dashboard.css")" />
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+<body>
+
+<div class="employee-dashboard">
+
+    <section class="employee-hero">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1 class="hero-heading">
+                <span class="typewriter-no-cursor">Welcome, @ViewBag.FarmerName!</span>
+            </h1>
+            <p class="hero-subheading">Manage your products, explore the blog, and connect with the AgriConnect community.</p>
+        </div>
+
+        <div class="hero-shape shape1"></div>
+        <div class="hero-shape shape2"></div>
+        <div class="hero-shape shape3"></div>
+    </section>
+
+    <div class="dashboard-grid">
+
+        <a href="@Url.Action("AddProduct", "Farmer")" class="dashboard-card">
+            <i class="fas fa-plus-circle card-icon"></i>
+            <span>Add Product</span>
+        </a>
+
+        <a href="@Url.Action("RequestCategory", "Farmer")" class="dashboard-card">
+            <i class="fas fa-tags card-icon"></i>
+            <span>Request New Category</span>
+        </a>
+
+        <a href="@Url.Action("MyProducts", "Farmer")" class="dashboard-card">
+            <i class="fas fa-box card-icon"></i>
+            <span>Manage My Products</span>
+        </a>
+
+        <a href="@Url.Action("CommunityBlog", "Farmer")" class="dashboard-card">
+            <i class="fas fa-comments card-icon"></i>
+            <span>Community Blog</span>
+        </a>
+
+        <a href="@Url.Action("EducationalResources", "Farmer")" class="dashboard-card">
+            <i class="fas fa-book-open card-icon"></i>
+            <span>Educational Resources</span>
+        </a>
+
+        <a href="@Url.Action("GreenEnergyMarketplace", "Farmer")" class="dashboard-card">
+            <i class="fas fa-solar-panel card-icon"></i>
+            <span>Green Energy Marketplace</span>
+        </a>
+
+        <a href="@Url.Action("Logout", "Account")" class="dashboard-card logout">
+            <i class="fas fa-sign-out-alt card-icon"></i>
+            <span>Logout</span>
+        </a>
+
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            @if (TempData["Success"] != null)
+            {
+                <text>
+                    Swal.fire({
+                        toast: true,
+                        position: 'top-end',
+                        icon: 'success',
+                        title: @Html.Raw(Json.Serialize(TempData["Success"])),
+                        showConfirmButton: false,
+                        timer: 5500,
+                        timerProgressBar: true,
+                        background: '#004d29',
+                        color: 'white',
+                        iconColor: '#21a95d'
+                    });
+                </text>
+            }
+        });
+    </script>
+}
+
+</body>
+</html>

@@ -1,0 +1,122 @@
+﻿@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - AgriConnect</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="~/css/agriconnect-home.css" asp-append-version="true" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
+    <script src="~/scripts/lottie-player.js"></script>
+</head>
+<body>
+    <header class="header-top">
+        <div class="logo-container">
+            <a href="/Home/Index">
+                <img src="/images/agriconnect-logo.png" alt="AgriConnect Logo" class="logo">
+            </a>
+            <a href="/Home/Index" class="site-title">AgriConnect</a>
+        </div>
+        <div class="contact-info">
+            <span><i class="fas fa-phone-alt"></i> +27 861 555 181</span>
+            <span><i class="fas fa-envelope"></i> agriconnectza@gmail.com</span>
+            <span><i class="fas fa-map-marker-alt"></i> Durban, South Africa</span>
+        </div>
+    </header>
+
+<nav class="sidebar" id="sidebar">
+    <button class="close-btn" onclick="toggleSidebar()">×</button>
+    <div class="sidebar-logo-stack">
+        <img src="/images/agriconnect-logo-side.png" class="sidebar-logo-top" />
+        <span class="sidebar-title-top">AgriConnect</span>
+    </div>
+
+    <a href="/Home/Index"><i class="fas fa-home"></i> Home</a>
+    <a href="/Home/PublicEnquiry"><i class="fas fa-question-circle"></i> Enquiries</a>
+    <a href="/Home/Contact"><i class="fas fa-envelope"></i> Contact Us</a>
+
+    @if (Context.Session.GetString("UID") != null)
+    {
+        var role = Context.Session.GetString("Role");
+        switch (role)
+        {
+            case "Employee":
+                <a href="/Employee/Dashboard"><i class="fas fa-tachometer-alt"></i> Dashboard</a>
+                break;
+            case "Farmer":
+                <a href="/Farmer/Dashboard"><i class="fas fa-tachometer-alt"></i> Dashboard</a>
+                break;
+            case "GreenTech":
+                <a href="/GreenTech/Dashboard"><i class="fas fa-tachometer-alt"></i> Dashboard</a>
+                break;
+        }
+
+        <a href="/Account/Logout"><i class="fas fa-sign-out-alt"></i> Logout</a>
+    }
+    else
+    {
+        <a href="/Account/Login"><i class="fas fa-sign-in-alt"></i> Login / Register</a>
+    }
+</nav>
+
+
+<button class="menu-toggle" onclick="toggleSidebar()">
+    <i class="fas fa-bars"></i> Menu
+</button>
+
+
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>AgriConnect</h3>
+                <p>Bringing farmers and green technology together for a sustainable future.</p>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+            <div class="footer-column">
+                <h3>Quick Links</h3>
+                <a href="/Home/Index">Home</a>
+                <a href="/Home/About">About Us</a>
+            <a href="/Home/TermsOfUse">Terms Of Use</a>
+                <a href="/Home/Contact">Contact</a>
+            </div>
+            <div class="footer-column">
+                <h3>Contact Us</h3>
+                <p><i class="fas fa-map-marker-alt"></i> Durban, South Africa</p>
+                <p><i class="fas fa-phone-alt"></i> +27 861 555 181</p>
+                <p><i class="fas fa-envelope"></i> agriconnectza@gmail.com</p>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>© 2025 AgriConnect. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+
+    <script>
+        function toggleSidebar() {
+            const sidebar = document.getElementById("sidebar");
+            sidebar.classList.toggle("open");
+        }
+    </script>
+</body>
+</html>

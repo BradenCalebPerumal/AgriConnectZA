@@ -1,0 +1,90 @@
+@model List<GreenAgriApp.Models.User>
+
+@{
+    ViewData["Title"] = "Registered Users";
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"]</title>
+    <link rel="stylesheet" href="~/css/agriconnect-form.css" />
+</head>
+<body>
+
+<section class="form-hero-section">
+    <h1>Registered Users</h1>
+    <p>Search, filter and click any user to view more details.</p>
+</section>
+
+<div class="category-search-wrapper">
+    <input type="text" id="searchBox" onkeyup="filterUsers()" placeholder="🔍 Search by name or email..." class="fancy-search-box" />
+</div>
+
+<div class="filter-options">
+    <label><input type="checkbox" id="filterFarmer" onchange="filterUsers()" checked /> Farmer</label>
+    <label><input type="checkbox" id="filterGreenTech" onchange="filterUsers()" checked /> GreenTech</label>
+</div>
+
+<div class="card-list-wrapper" id="userCardContainer">
+    @foreach (var user in Model)
+    {
+        <div class="category-card" data-name="@user.FullName.ToLower()" data-role="@user.Role.ToLower()" onclick="location.href='@Url.Action("ViewUser", "Employee", new { id = user.Id })'">
+            <h3 class="category-name">@user.FullName</h3>
+            <p><strong>Email:</strong> @user.Email</p>
+            <p><strong>Role:</strong> @user.Role</p>
+            <p><strong>Status:</strong> @(user.IsActive ? "Active" : "Inactive")</p>
+        </div>
+    }
+</div>
+
+<script>
+    function filterUsers() {
+        const search = document.getElementById("searchBox").value.toLowerCase();
+        const filterFarmer = document.getElementById("filterFarmer").checked;
+        const filterGreenTech = document.getElementById("filterGreenTech").checked;
+
+        const cards = document.querySelectorAll(".category-card");
+
+        cards.forEach(card => {
+            const name = card.getAttribute("data-name");
+            const role = card.getAttribute("data-role");
+
+            const matchesSearch = name.includes(search);
+            const matchesRole =
+                (filterFarmer && role === "farmer") ||
+                (filterGreenTech && role === "greentech");
+
+            card.style.display = (matchesSearch && matchesRole) ? "block" : "none";
+        });
+    }
+</script>
+
+@section Scripts {
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            @if (TempData["Success"] != null)
+            {
+                <text>
+                    Swal.fire({
+                        toast: true,
+                        position: 'top-end',
+                        icon: 'success',
+                        title: @Html.Raw(Json.Serialize(TempData["Success"])),
+                        showConfirmButton: false,
+                        timer: 5500,
+                        timerProgressBar: true,
+                        background: '#004d29',
+                        color: 'white',
+                        iconColor: '#21a95d'
+                    });
+                </text>
+            }
+        });
+    </script>
+}
+
+</body>
+</html>

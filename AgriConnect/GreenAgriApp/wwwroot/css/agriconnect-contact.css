@@ -1,0 +1,162 @@
+.contact-hero {
+    background: linear-gradient(135deg, #00703c 50%, #004d29 50%);
+    color: white;
+    text-align: center;
+    padding: 80px 20px 40px 20px;
+    width: 100vw;
+    margin-left: calc(-50vw + 50%);
+    position: relative;
+    z-index: 2;
+}
+
+.contact-form-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-width: 1300px;
+    margin: 60px auto;
+    padding: 40px;
+    gap: 60px;
+    background: #f7f7f7;
+    border-radius: 15px;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+.contact-image-container {
+    flex: 1.5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: slideInLeft 1s ease forwards;
+    opacity: 0;
+}
+
+.contact-side-image {
+    width: 100%;
+    max-width: 550px;
+    max-height: 600px;
+    object-fit: cover;
+    border-radius: 50px;
+    box-shadow: 0 20px 40px rgba(0, 112, 60, 0.2), 0 0 40px rgba(0, 112, 60, 0.15);
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.contact-side-image:hover {
+    transform: scale(1.03);
+    box-shadow: 0 30px 60px rgba(0, 112, 60, 0.3), 0 0 60px rgba(0, 112, 60, 0.25);
+}
+
+.contact-form-container {
+    flex: 1;
+    background: white;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+    animation: slideInRight 1.1s ease forwards;
+    opacity: 0;
+}
+
+.contact-details {
+    background: #e6f5ed;
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 30px;
+    font-size: 15px;
+    line-height: 1.6;
+}
+
+.form-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+input[type="text"],
+input[type="email"],
+textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+textarea {
+    min-height: 100px;
+    resize: vertical;
+}
+
+button {
+    background: #00703c;
+    color: white;
+    border: none;
+    padding: 14px 32px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: 600;
+    margin-top: 20px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+button:hover {
+    background: #005a2b;
+    transform: scale(1.05);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+}
+
+.map-section {
+    max-width: 1300px;
+    margin: 30px auto;
+    padding: 20px;
+    text-align: center;
+}
+
+footer {
+    background: #004d29;
+    color: white;
+    text-align: center;
+    padding: 20px;
+}
+
+/* Animations */
+@keyframes slideInLeft {
+    from {
+        transform: translateX(-100px);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slideInRight {
+    from {
+        transform: translateX(100px);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+    .contact-form-wrapper {
+        flex-direction: column;
+        padding: 20px;
+    }
+
+    .contact-image-container, .contact-form-container {
+        width: 100%;
+        text-align: center;
+    }
+
+    .contact-side-image {
+        max-height: 300px;
+    }
+}

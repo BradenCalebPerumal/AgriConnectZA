@@ -1,0 +1,85 @@
+@{
+    ViewData["Title"] = "Add GreenTech Product";
+    var categories = ViewBag.Categories as List<GreenAgriApp.Models.Category>;
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"]</title>
+    <link rel="stylesheet" href="~/css/agriconnect-form.css" />
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+<body>
+
+<section class="form-hero-section">
+    <h1>Add New GreenTech Product</h1>
+    <p>Fill in the product details below and optionally upload an image.</p>
+</section>
+
+<div class="form-container">
+    <form asp-action="AddProduct" method="post" enctype="multipart/form-data" class="agriconnect-form">
+        <div class="form-group">
+            <label>Product Name:</label>
+            <input type="text" name="name" required class="form-control" />
+        </div>
+
+        <div class="form-group">
+            <label>Description:</label>
+            <textarea name="description" required class="form-control" rows="3"></textarea>
+        </div>
+
+        <div class="form-group">
+            <label>Quantity:</label>
+            <input type="number" name="quantity" min="1" required class="form-control" />
+        </div>
+
+        <div class="form-group">
+            <label>Category:</label>
+            <select name="categoryId" required class="form-control">
+                <option value="">-- Select Category --</option>
+                @foreach (var cat in categories)
+                {
+                    <option value="@cat.Id">@cat.Name</option>
+                }
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label>Upload Image (Optional):</label>
+            <input type="file" name="imageFile" class="form-control" />
+        </div>
+
+        <button type="submit" class="submit-button">
+            <i class="fas fa-solar-panel"></i> Add GreenTech Product
+        </button>
+    </form>
+</div>
+
+@section Scripts {
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            @if (TempData["Success"] != null)
+            {
+                <text>
+                    Swal.fire({
+                        toast: true,
+                        position: 'top-end',
+                        icon: 'success',
+                        title: @Html.Raw(Json.Serialize(TempData["Success"])),
+                        showConfirmButton: false,
+                        timer: 5000,
+                        timerProgressBar: true,
+                        background: '#004d29',
+                        color: 'white',
+                        iconColor: '#21a95d'
+                    });
+                </text>
+            }
+        });
+    </script>
+}
+
+</body>
+</html>

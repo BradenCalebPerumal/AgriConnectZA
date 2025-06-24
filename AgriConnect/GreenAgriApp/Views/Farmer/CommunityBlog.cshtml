@@ -1,0 +1,92 @@
+@model List<GreenAgriApp.Models.BlogPost>
+
+@{
+    ViewData["Title"] = "Community Blog";
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"]</title>
+    <link rel="stylesheet" href="~/css/agriconnect-form.css" />
+    <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+<body>
+
+<section class="form-hero-section">
+    <h1>Community Blog</h1>
+    <p>Share your experiences, questions, and connect with other farmers.</p>
+</section>
+
+<div class="form-container">
+    <form asp-action="PostToBlog" method="post" enctype="multipart/form-data" class="agriconnect-form">
+        <div class="form-group">
+            <label>Message:</label>
+            <textarea name="message" class="form-control" placeholder="Write your blog message..." required></textarea>
+        </div>
+        <div class="form-group">
+            <label>Optional Image:</label>
+            <input type="file" name="imageFile" class="form-control" />
+        </div>
+        <button type="submit" class="submit-button">
+            <i class="fas fa-paper-plane"></i> Post
+        </button>
+    </form>
+</div>
+
+<div class="blog-list-container">
+    @foreach (var post in Model)
+    {
+        <div class="blog-card @(post.IsViolation ? "blog-card-violation" : "")">
+            <div class="blog-header">
+                <strong>@post.UserName</strong>
+                <span class="blog-date">@post.DatePosted.ToString("dd MMM yyyy")</span>
+            </div>
+
+            <p class="blog-message">
+                @(post.IsViolation ? post.ViolationNote : post.Message)
+            </p>
+
+            @if (!string.IsNullOrEmpty(post.ImagePath) && !post.IsViolation)
+            {
+                <img src="@post.ImagePath" class="blog-thumbnail" onclick="expandImage('@post.ImagePath')" />
+            }
+        </div>
+    }
+</div>
+
+<script>
+    function expandImage(src) {
+        const win = window.open();
+        win.document.write('<img src="' + src + '" style="width:100%"/>');
+    }
+</script>
+
+@section Scripts {
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            @if (TempData["Success"] != null)
+            {
+                <text>
+                    Swal.fire({
+                        toast: true,
+                        position: 'top-end',
+                        icon: 'success',
+                        title: @Html.Raw(Json.Serialize(TempData["Success"])),
+                        showConfirmButton: false,
+                        timer: 5000,
+                        timerProgressBar: true,
+                        background: '#004d29',
+                        color: 'white',
+                        iconColor: '#21a95d'
+                    });
+                </text>
+            }
+        });
+    </script>
+}
+
+</body>
+</html>

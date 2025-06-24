@@ -1,0 +1,135 @@
+@model List<GreenAgriApp.Models.Product>
+
+@{
+    ViewData["Title"] = "All Farmer Products Grouped by Category";
+    var groupedProducts = Model.GroupBy(p => p.Category.Name);
+    var categories = Model.Select(p => p.Category.Name).Distinct().OrderBy(c => c).ToList();
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>@ViewData["Title"]</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="~/css/agriconnect-form.css" />
+</head>
+<body>
+
+<section class="form-hero-section">
+    <h1>All Farmer Products</h1>
+    <p>Grouped by category with search and filtering options.</p>
+</section>
+
+<div class="category-search-wrapper">
+    <input type="text" id="searchBox" onkeyup="filterProducts()" placeholder="🔍 Search by product name or farmer..." class="fancy-search-box" />
+</div>
+
+<div style="text-align:center; margin-bottom: 40px;">
+    <label for="categoryFilter"><strong>Filter by Category:</strong></label>
+    <select id="categoryFilter" onchange="filterProducts()" class="styled-select" style="min-width: 200px; margin-left: 10px;">
+        <option value="all">All Categories</option>
+        @foreach (var cat in categories)
+        {
+            <option value="@cat.ToLower()">@cat</option>
+        }
+    </select>
+</div>
+
+<div id="productCardContainer">
+    @foreach (var group in groupedProducts)
+    {
+        <div class="product-group" data-category="@group.Key.ToLower()">
+            <h2 style="margin-left: 50px; margin-top: 40px;">@group.Key</h2>
+            <div class="card-list-wrapper">
+                @foreach (var product in group)
+                {
+                    <div class="category-card product-card" 
+                         data-name="@product.Name.ToLower()" 
+                         data-farmer="@product.UserName.ToLower()" 
+                         data-category="@product.Category.Name.ToLower()" 
+                         onclick="showProductDetails('@product.Name', '@product.UserName', '@product.Description', '@product.Quantity', '@product.DatePosted.ToShortDateString()', '@(product.Image != null ? Convert.ToBase64String(product.Image) : "")')">
+                        <div class="product-card-content">
+                            <div class="product-text">
+                                <h3 class="category-name">@product.Name</h3>
+                                <p><strong>Farmer:</strong> @product.UserName</p>
+                                <p><strong>Description:</strong> @product.Description</p>
+                                <p><strong>Quantity:</strong> @product.Quantity</p>
+                                <p><strong>Date Posted:</strong> @product.DatePosted.ToShortDateString()</p>
+                            </div>
+                            @if (product.Image != null)
+                            {
+                                <div class="product-image-container">
+                                    <img src="data:image/jpeg;base64,@Convert.ToBase64String(product.Image)" class="product-thumbnail" />
+                                </div>
+                            }
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    }
+</div>
+
+<div id="productModal" style="display:none; position:fixed; top:10%; left:50%; transform:translateX(-50%); background:white; border:1px solid #ccc; padding:20px; z-index:1000; width:500px; max-width:90%; border-radius:12px; box-shadow:0 15px 40px rgba(0,0,0,0.2);">
+    <h3 id="modalTitle"></h3>
+    <p><strong>Farmer:</strong> <span id="modalFarmer"></span></p>
+    <p><strong>Description:</strong> <span id="modalDescription"></span></p>
+    <p><strong>Quantity:</strong> <span id="modalQuantity"></span></p>
+    <p><strong>Date Posted:</strong> <span id="modalDate"></span></p>
+    <div id="modalImageContainer" style="margin-top: 15px;"></div>
+    <button class="submit-button" style="margin-top: 20px;" onclick="closeModal()">Close</button>
+</div>
+
+<div id="modalBackdrop" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.5); z-index:999;" onclick="closeModal()"></div>
+
+<script>
+    function filterProducts() {
+        const search = document.getElementById("searchBox").value.toLowerCase();
+        const categoryFilter = document.getElementById("categoryFilter").value;
+
+        const cards = document.querySelectorAll(".product-card");
+
+        cards.forEach(card => {
+            const name = card.getAttribute("data-name");
+            const farmer = card.getAttribute("data-farmer");
+            const category = card.getAttribute("data-category");
+
+            const matchesSearch = name.includes(search) || farmer.includes(search);
+            const matchesCategory = categoryFilter === "all" || category === categoryFilter;
+
+            card.style.display = matchesSearch && matchesCategory ? "block" : "none";
+        });
+
+        const groups = document.querySelectorAll(".product-group");
+        groups.forEach(group => {
+            const visibleCards = group.querySelectorAll(".product-card[style*='display: block']");
+            group.style.display = visibleCards.length > 0 ? "block" : "none";
+        });
+    }
+
+    function showProductDetails(name, farmer, description, quantity, datePosted, imageBase64) {
+        document.getElementById('modalTitle').innerText = name;
+        document.getElementById('modalFarmer').innerText = farmer;
+        document.getElementById('modalDescription').innerText = description;
+        document.getElementById('modalQuantity').innerText = quantity;
+        document.getElementById('modalDate').innerText = datePosted;
+
+        const imageContainer = document.getElementById('modalImageContainer');
+        if (imageBase64) {
+            imageContainer.innerHTML = `<img src="data:image/jpeg;base64,${imageBase64}" class="modal-product-image" />`;
+        } else {
+            imageContainer.innerHTML = "<p>No image available.</p>";
+        }
+
+        document.getElementById('productModal').style.display = 'block';
+        document.getElementById('modalBackdrop').style.display = 'block';
+    }
+
+    function closeModal() {
+        document.getElementById('productModal').style.display = 'none';
+        document.getElementById('modalBackdrop').style.display = 'none';
+    }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,104 @@
+@model GreenAgriApp.Models.Resource
+
+@{
+    ViewData["Title"] = "Edit Resource";
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>@ViewData["Title"]</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="~/css/agriconnect-form.css" />
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+<body>
+
+<section class="form-hero-section">
+    <h1>Edit Resource</h1>
+    <p>Update the details or download the resource file.</p>
+</section>
+
+<div class="form-container">
+    <form asp-action="UpdateResource" method="post" class="agriconnect-form">
+        <input type="hidden" name="Id" value="@Model.Id" />
+
+        <div class="form-group">
+            <label for="Title">Title</label>
+            <input type="text" name="Title" value="@Model.Title" class="form-control" required />
+        </div>
+
+        <div class="form-group">
+            <label for="Description">Description</label>
+            <textarea name="Description" class="form-control" rows="4" required>@Model.Description</textarea>
+        </div>
+
+        <div class="form-group">
+            <label></label><br />
+            <a href="@Model.FilePath" target="_blank" class="submit-button" style="text-decoration: none; display: inline-block; max-width: 200px;">
+                <i class="fas fa-download"></i> Download File
+            </a>
+        </div>
+
+        <button type="submit" class="submit-button">
+            <i class="fas fa-save"></i> Save Changes
+        </button>
+    </form>
+
+    <hr />
+    <h3 style="margin-top: 30px;">Delete Resource</h3>
+    <p>Type <strong>DELETE</strong> below to confirm permanent deletion:</p>
+    <input type="text" id="deleteConfirm" class="form-control" placeholder="Type DELETE here..." onkeyup="checkDelete()" />
+
+    <button id="deleteButton" class="delete-btn" disabled style="margin-top: 15px;" onclick="confirmDelete('@Model.Id')">
+        <i class="fas fa-trash-alt"></i> Delete Resource
+    </button>
+</div>
+
+<script>
+    function checkDelete() {
+        const input = document.getElementById('deleteConfirm').value.trim();
+        const button = document.getElementById('deleteButton');
+        button.disabled = (input !== 'DELETE');
+    }
+
+    function confirmDelete(resourceId) {
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "This will permanently delete the resource!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#d33',
+            cancelButtonColor: '#aaa',
+            confirmButtonText: 'Yes, delete it!',
+            background: '#fff',
+        }).then((result) => {
+            if (result.isConfirmed) {
+                window.location.href = '/Employee/DeleteResource?id=' + resourceId;
+            }
+        });
+    }
+
+    document.addEventListener('DOMContentLoaded', function () {
+        @if (TempData["Success"] != null)
+        {
+            <text>
+                Swal.fire({
+                    toast: true,
+                    position: 'top-end',
+                    icon: 'success',
+                    title: @Html.Raw(Json.Serialize(TempData["Success"])),
+                    showConfirmButton: false,
+                    timer: 5500,
+                    timerProgressBar: true,
+                    background: '#004d29',
+                    color: 'white',
+                    iconColor: '#21a95d'
+                });
+            </text>
+        }
+    });
+</script>
+
+</body>
+</html>

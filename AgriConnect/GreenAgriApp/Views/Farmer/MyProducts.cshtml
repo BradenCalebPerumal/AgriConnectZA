@@ -1,0 +1,125 @@
+@model List<GreenAgriApp.Models.Product>
+
+@{
+    ViewData["Title"] = "My Products";
+    var groupedProducts = Model.GroupBy(p => p.Category.Name);
+var categories = ViewBag.Categories as List<GreenAgriApp.Models.Category>;
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"]</title>
+    <link rel="stylesheet" href="~/css/agriconnect-form.css" />
+</head>
+<body>
+
+<section class="form-hero-section">
+    <h1>My Products</h1>
+    <p>Manage and view your products by category.</p>
+</section>
+
+<div class="category-search-wrapper">
+    <input type="text" id="searchBox" onkeyup="filterProducts()" placeholder="🔍 Search by product name..." class="fancy-search-box" />
+</div>
+
+<div style="text-align:center; margin-bottom: 40px;">
+    <label for="categoryFilter"><strong>Filter by Category:</strong></label>
+    <select id="categoryFilter" onchange="filterProducts()" class="styled-select" style="min-width: 200px; margin-left: 10px;">
+        <option value="all">All Categories</option>
+     @foreach (var cat in categories)
+{
+    <option value="@cat.Name.ToLower()">@cat.Name</option>
+}
+
+    </select>
+</div>
+
+<div id="productCardContainer">
+    @foreach (var group in groupedProducts)
+    {
+        <div class="product-group" data-category="@group.Key.ToLower()">
+            <h2 style="margin-left: 50px; margin-top: 40px;">@group.Key</h2>
+            <div class="card-list-wrapper">
+                @foreach (var product in group)
+                {
+                    <div class="category-card product-card"
+                         data-name="@product.Name.ToLower()"
+                         data-category="@product.Category.Name.ToLower()"
+                         onclick="location.href='@Url.Action("ManageProduct", "Farmer", new { id = product.Id })'">
+
+                        <div class="product-card-content">
+                            <div class="product-text">
+                                <h3 class="category-name">@product.Name</h3>
+                                <p><strong>Description:</strong> @product.Description</p>
+                                <p><strong>Quantity:</strong> @product.Quantity</p>
+                                <p><strong>Date Posted:</strong> @product.DatePosted.ToShortDateString()</p>
+                            </div>
+
+                            @if (product.Image != null)
+                            {
+                                <div class="product-image-container">
+                                    <img src="data:image/jpeg;base64,@Convert.ToBase64String(product.Image)" class="product-thumbnail" />
+                                </div>
+                            }
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    }
+</div>
+
+<script>
+    function filterProducts() {
+        const search = document.getElementById("searchBox").value.toLowerCase();
+        const categoryFilter = document.getElementById("categoryFilter").value;
+
+        const cards = document.querySelectorAll(".product-card");
+
+        cards.forEach(card => {
+            const name = card.getAttribute("data-name");
+            const category = card.getAttribute("data-category");
+
+            const matchesSearch = name.includes(search);
+            const matchesCategory = categoryFilter === "all" || category === categoryFilter;
+
+            card.style.display = matchesSearch && matchesCategory ? "block" : "none";
+        });
+
+        const groups = document.querySelectorAll(".product-group");
+        groups.forEach(group => {
+            const visibleCards = group.querySelectorAll(".product-card[style*='display: block']");
+            group.style.display = visibleCards.length > 0 ? "block" : "none";
+        });
+    }
+</script>
+
+@section Scripts {
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            @if (TempData["Success"] != null)
+            {
+                <text>
+                    Swal.fire({
+                        toast: true,
+                        position: 'top-end',
+                        icon: 'success',
+                        title: @Html.Raw(Json.Serialize(TempData["Success"])),
+                        showConfirmButton: false,
+                        timer: 5500,
+                        timerProgressBar: true,
+                        background: '#004d29',
+                        color: 'white',
+                        iconColor: '#21a95d'
+                    });
+                </text>
+            }
+        });
+    </script>
+}
+
+</body>
+</html>

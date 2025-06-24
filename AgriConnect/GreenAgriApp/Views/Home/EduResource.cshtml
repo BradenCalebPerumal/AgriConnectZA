@@ -1,0 +1,93 @@
+@model List<GreenAgriApp.Models.Resource>
+
+@{
+    ViewData["Title"] = "Educational Resources";
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"]</title>
+    <link rel="stylesheet" href="~/css/agriconnect-form.css" />
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+<body>
+
+<section class="form-hero-section">
+    <h1>Educational Resources</h1>
+    <p>Browse and download learning materials to enhance your agricultural knowledge.</p>
+</section>
+
+<div class="category-search-wrapper">
+    <input type="text" id="searchBox" placeholder="🔍 Search by title or description..." onkeyup="filterResources()" class="fancy-search-box" />
+</div>
+
+<div class="table-wrapper">
+    <table class="styled-table" id="resourceTable">
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Description</th>
+                <th>Upload Date</th>
+                <th>Download</th>
+            </tr>
+        </thead>
+        <tbody>
+        @foreach (var res in Model)
+        {
+            <tr>
+                <td>@res.Title</td>
+                <td>@res.Description</td>
+                <td>@res.UploadDate.ToShortDateString()</td>
+                <td>
+                    <a href="@res.FilePath" download class="submit-button" style="padding: 6px 12px; font-size: 0.9rem;">
+                        <i class="fas fa-download"></i> Download
+                    </a>
+                </td>
+            </tr>
+        }
+        </tbody>
+    </table>
+</div>
+
+@section Scripts {
+    <script>
+        function filterResources() {
+            const input = document.getElementById('searchBox').value.toLowerCase();
+            const rows = document.querySelectorAll("#resourceTable tbody tr");
+
+            rows.forEach(row => {
+                const title = row.cells[0].innerText.toLowerCase();
+                const desc = row.cells[1].innerText.toLowerCase();
+                const matches = title.includes(input) || desc.includes(input);
+                row.style.display = matches ? '' : 'none';
+            });
+        }
+    </script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            @if (TempData["Success"] != null)
+            {
+                <text>
+                    Swal.fire({
+                        toast: true,
+                        position: 'top-end',
+                        icon: 'success',
+                        title: @Html.Raw(Json.Serialize(TempData["Success"])),
+                        showConfirmButton: false,
+                        timer: 5500,
+                        timerProgressBar: true,
+                        background: '#004d29',
+                        color: 'white',
+                        iconColor: '#21a95d'
+                    });
+                </text>
+            }
+        });
+    </script>
+}
+
+</body>
+</html>

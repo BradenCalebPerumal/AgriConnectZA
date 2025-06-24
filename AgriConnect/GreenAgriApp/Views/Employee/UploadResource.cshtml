@@ -1,0 +1,62 @@
+@model GreenAgriApp.Models.Resource
+
+@{
+    ViewData["Title"] = "Upload Educational Resource";
+}
+<link rel="stylesheet" href="~/css/agriconnect-form.css" />
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<!-- ✅ Hero Section -->
+<section class="form-hero-section">
+    <h1>Upload Educational Resource</h1>
+    <p>Share valuable learning content with the AgriConnect community.</p>
+</section>
+
+<!-- ✅ Form Container -->
+<div class="form-container">
+    <form asp-action="UploadResource" method="post" enctype="multipart/form-data" class="agriconnect-form">
+        <div class="form-group">
+            <label for="Title">Title:</label>
+            <input type="text" name="Title" class="form-control" required placeholder="Enter resource title" />
+        </div>
+
+        <div class="form-group">
+            <label for="Description">Description:</label>
+            <textarea name="Description" class="form-control" required placeholder="Brief description of the resource"></textarea>
+        </div>
+
+        <div class="form-group">
+            <label for="file">Upload File:</label>
+            <input type="file" name="file" class="form-control" required />
+        </div>
+
+        <button type="submit" class="submit-button">
+            <i class="fas fa-upload"></i> Upload Resource
+        </button>
+    </form>
+</div>
+
+<!-- ✅ Success Alert -->
+@section Scripts {
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            @if (TempData["Success"] != null)
+            {
+                <text>
+                    Swal.fire({
+                        toast: true,
+                        position: 'top-end',
+                        icon: 'success',
+                        title: @Html.Raw(Json.Serialize(TempData["Success"])),
+                        showConfirmButton: false,
+                        timer: 5000,
+                        timerProgressBar: true,
+                        background: '#004d29',
+                        color: 'white',
+                        iconColor: '#21a95d'
+                    });
+                </text>
+            }
+        });
+    </script>
+}
