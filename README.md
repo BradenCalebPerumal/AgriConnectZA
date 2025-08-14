@@ -2,7 +2,7 @@
 
 # 🌱 AgriConnect🌱
 <h1 align="center">
-  <img src="https://readme-typing-svg.herokuapp.com?font=Poppins&size=32&duration=3000&pause=1000&color=00C853&center=true&vCenter=true&width=900&lines=Connecting+Farmers+🌾+and+GreenTech+Experts+♻;Creating+an+Efficient+and+Sustainable+Future;Developed+by+Braden+Caleb+Perumal" alt="Typing SVG" />
+  <img src="https://readme-typing-svg.herokuapp.com?font=Russo+One&size=28&duration=3000&pause=1000&color=00C853&center=true&vCenter=true&width=900&lines=Connecting+Farmers+🌾+and+GreenTech+Experts+♻;Creating+an+Efficient+and+Sustainable+Future;Developed+by+Braden+Caleb+Perumal" alt="Typing SVG" />
 </h1>
 
 
