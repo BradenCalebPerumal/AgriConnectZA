@@ -175,7 +175,9 @@ AgriConnect follows the **Model-View-Controller (MVC)** pattern:
 ---
 
 ## 🙌 13) Credits
-This project was created and maintained by **Braden Caleb Perumal (ST10287165)** as part of a capstone module.
+
+ 👨‍💻 Braden Caleb Perumal (ST10287165)  
+ 📧 **Email:** [calebperumal28@gmail.com](mailto:calebperumal28@gmail.com)
 
 ---
 
